@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Company Directory">
+  <meta name="keywords" content="HTML, CSS, JavaScript, PHP, AJAX, MYSQL">
+  <meta name="author" content="Pooja Dodia">
+    <title>Company & Co.</title>
+    <link rel="icon" type="image/x-icon" href="images/directoryLogo.png" />
+  </head>
+  <body>
+    <div id="section-container">
+             <!--EMPLOYEE SUCCESSFULLY ADDED MODAL-->
+      <!-- Modal -->
+<div class="modal fade" id="employeeAdded" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content successDesign">
+    
+      <div class="modal-body successDesign">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="addModalExp"><p id="empName">Employee</p>successfully added.</h3>
+      </div>
+     
+    </div>
+  </div>
+</div>
+      <div id="section1">
+        <img
+          src="images/directoryLogo.png"
+          alt="logo of company & co."
+          id="logo"
+        />
+
+        <div class="tooltipLogout">
+          <span class="tooltiptextLogout">LOGOUT</span>
+          <a href="index.html" class="logout"
+            ><img src="images/logout.png" alt="logout icon" id="logoutIcon"
+          /></a>
+        </div>
+      </div>
+      
+      <div id="section2">
+      
+        <div id="main-container">
+          
+         
+                  
+                
+           <main class="colour">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col" id="title">
+            <!--<h1 id="titleText">Company & Co.</h1>-->
+          </div>
+        </div>
+
+      <img src="images/directoryLogo.png" alt="company logo" id="smallLogo" title="Logout">
+       <div id="loggedInImg2">
+          <img
+            src="images/employee.png"
+            alt="employee icon"
+            id="employeeIcon2"
+          />
+          <p>Logged in: <br />admin</p>
+        </div>
+        <div id="welcomeSearch">
+          <div id="dateWelcome">
+            <h2>Hello, Admin</h2>
+            <p>Today is <date id="todayDate"></date></p>
+          </div>
+
+
+            <div class="col searchBar">
+                   
+                           
+                            <div id="searchBar" class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        
+                                            <select id="searchSelect" name="searchSelect" >
+                                                <option value="firstName" selected>First Name </option>
+                                                <option value="lastName">Last Name</option>
+                                                <option value="email">Email</option>
+                                                <option value="jobTitle">Job Title</option>
+                                                <option value="department">Department</option>
+                                                <option value="location">Location</option>
+                                            </select> 
+                                     
+                                    </div> 
+                                    <input id="searchField" name="text" type="text" class="searchDesign" placeholder="Search..." required="required"> 
+                                    <div class="input-group-append">
+                                        <div class="input-group-text" id="search">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                    </div>
+                                     <div class="col-xs reset">
+                                <span id="resetBtn" alt="Reset icon" title="
+                                Reset"><i class="fas fa-undo"></i></span>
+                            </div>
+                                </div>
+                            </div>
+                       
+                    </div>
+          </div>
+          
+  <div class="tooltipLogout">
+          <span class="tooltiptextLogout">LOGOUT</span>
+          <a href="index.html" class="logout"
+            ><img src="images/logout.png" alt="logout icon" id="logoutIcon2"
+          /></a>
+        </div>
+       
+        <div id="modalButtonsContainer">
+        <div class="row" id="buttonsCompany">
+          <div class="col buttonRow">
+            <button type="button"
+              id="addEmployee" data-bs-toggle="modal"
+              data-bs-target="#addEmployeeModal"> <p class="toggleButtons designButton">+<img src="images/employees.png" id="employeesIcon" alt="employeesIcon">Employee</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="row" id="buttonsCompany">
+          <div class="col buttonRow">
+            <button type="button"
+              id="departments"
+              class="marginCancelNew"
+              data-bs-toggle="modal"
+              data-bs-target="#departmentsModal"> <p class="toggleButtons designButton"><img src="images/departmentsNew.png" alt="department image" id="departmentIcon">Departments</p>
+            </button>
+          </div>
+        </div>
+        <div class="row" id="buttonsCompany">
+          <div class="col buttonRow">
+            <button type="button"
+              id="locations" data-bs-toggle="modal"
+              data-bs-target="#locationsModal"> <p class="toggleButtons designButton"><img src="images/location.png" id="locationsIcon" alt="locations Icon">Locations</p>
+            </button>
+          </div>
+        </div>
+        </div>
+
+ 
+
+        <div class="tableScroll">
+          <p id="clickRow">* Click on row to view, edit or delete employee details</p>
+            <table class="table table-hover" id="sqlTable">
+                <thead>
+                    <tr class="tableHeader">
+                        <th scope="col" id="" class="tableIcon"></th>
+                        <th scope="col" id="firstName">First Name</i></th>
+                        <th scope="col" id="lastName">Last Name </i></th>
+                        <th scope="col" id="email" class="hider1">Email </i></th>
+                        <th scope="col" id="jobTitle" class="hider1">Job Title </i></th>
+                        <th scope="col" id="department" class="hider2">Department </i></th>
+                        <th scope="col" id="location" class="hider2">Location </i></th>
+                     </tr>
+                </thead>
+                 <tbody id="mainEmployeesTable"></tbody>
+                 
+            </table>
+            
+        </div>
+
+        <!-- User Info Modal -->
+        <div
+          class="modal fade"
+          id="insertEmployeeModal"
+          tabindex="-1"
+          aria-labelledby="insertEmployeeModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+         
+                
+               
+             
+
+              <div class="modal-body editModalDesign">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+               <h3 class="modal-title" id="employeeModalLabel"></h3>
+                <div class="form-group row">
+                  <label for="employeeId" class="col-4 col-form-label titlesModal"
+                    >Employee ID</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                       
+                        <input
+                          id="employeeId"
+                          name="employeeId"
+                          type="text"
+                          required="required"
+                          class="form-control userInfo"
+                          disabled
+                          readonly
+                          
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="employeeFirstName" class="col-4 col-form-label titlesModal"
+                    >First Name</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                        
+                        <input
+                          id="employeeFirstName"
+                          name="employeeFirstName"
+                          type="text"
+                          required="required"
+                          class="form-control userInfo "
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="employeeLastName" class="col-4 col-form-label titlesModal"
+                    >Last Name</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                        
+                        <input
+                          id="employeeLastName"
+                          name="employeeLastName"
+                          type="text"
+                          required="required"
+                          class="form-control userInfo"
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="employeeEmail" class="col-4 col-form-label titlesModal"
+                    >Email</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                        
+                        <input
+                          id="employeeEmail"
+                          name="employeeEmail"
+                          type="text"
+                          class="form-control userInfo"
+                          required="required userInfo"
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="employeeJob" class="col-4 col-form-label titlesModal"
+                    >Job Title</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                        
+                        <input
+                          id="employeeJob"
+                          name="employeeJob"
+                          type="text"
+                          class="form-control userInfo"
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="employeeDepartment" class="col-4 col-form-label titlesModal"
+                    >Department</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                        
+                        <input
+                          id="employeeDepartment"
+                          name="employeeDepartment"
+                          type="text"
+                          class="form-control userInfo"
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-4 col-form-label titlesModal" for="employeeLocation"
+                    >Location</label
+                  >
+                  <div class="col-8">
+                    <div class="input-group">
+                      <div class="input-group-prepend modalIcon">
+                       
+                        <input
+                          id="employeeLocation"
+                          name="employeeLocation"
+                          type="text"
+                          class="form-control userInfo"
+                          disabled
+                          readonly
+                        />
+                      </div>
+                    </div>
+                  </div>
+                    <div id="editDelButton">
+                      
+                    <button type="button" id="edit" data-bs-dismiss="modal"
+                      data-bs-toggle="modal" class="editDelButtonNew"
+                      data-bs-target="#userEditModal" ck>Edit <i class="fas fa-edit"></i></button>
+                      <br>
+                      <button
+                      type="button"
+                      class="editDelButtonNew"
+                      id="delete"
+                      data-bs-dismiss="modal"
+                    >
+                      Delete <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              
+                
+               
+              </div>
+
+              
+               
+             
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit User Modal -->
+        <form id="editUserForm">
+          <div
+            class="modal fade"
+            id="userEditModal"
+            tabindex="-1"
+            aria-labelledby="userEditModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content addEmployeeModalDesign">
+                
+                          
+
+               
+
+                <div class="modal-body addEmployeeModalDesign">
+                   <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    <h3 class="modal-title editEmployeeTitle">Edit Employee </h3>
+            
+                  <div class="form-group row">
+                    <label
+                      for="edit_user_firstName"
+                      class="col-4 col-form-label titlesModal"
+                      >First Name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                        
+                          <input
+                            id="edit_user_firstName"
+                            name="edit_user_firstName"
+                            type="text"
+                            required="required"
+                            class="form-control userInfo"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="edit_user_lastName" class="col-4 col-form-label titlesModal"
+                      >Last Name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                        
+                          <input
+                            id="edit_user_lastName"
+                            name="edit_user_lastName"
+                            type="text"
+                            required="required"
+                            class="form-control userInfo"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="edit_user_email" class="col-4 col-form-label titlesModal"
+                      >Email</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                         
+                          <input
+                            id="edit_user_email"
+                            name="edit_user_email"
+                            type="text"
+                            class="form-control userInfo"
+                            required="required"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="edit_user_jobTitle" class="col-4 col-form-label titlesModal"
+                      >Job Title</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <input
+                            id="edit_user_jobTitle"
+                            name="edit_user_jobTitle"
+                            type="text"
+                            class="form-control userInfo"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label
+                      for="edit_user_department"
+                      class="col-4 col-form-label titlesModal"
+                      >Department</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <select
+                            id="edit_user_department"
+                            name="edit_user_department"
+                            class="custom-select userInfo"
+                            required="required"
+                          ></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label titlesModal " for="edit_user_location"
+                      >Location</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group ">
+                        <div class="input-group-prepend modalIcon">
+                        
+                          <p
+                            id="edit_user_location"
+                            class="form-control formLocation userInfo"
+                          ></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <div class="form-group row submitBtn" id="editDelButton">
+                   <button
+                  type="button"
+                  class="editDelButtonNew marginCancel btn-close"
+                  data-dismiss="modal"
+                   
+                  
+                >
+                  Cancel <i class="fas fa-ban"></i>
+                </button>
+                    
+                      <button
+                        id="editUserConfirm"
+                        name="editUserConfirm"
+                        type="submit"
+                        class="editDelButtonNew"
+                      >
+                        Confirm <i class="fas fa-check"></i>
+                      </button>
+                   
+                  </div>
+                </div>
+
+               
+                 
+               
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- User Delete Modal -->
+        <div
+          class="modal fade"
+          id="userDeleteModal"
+          tabindex="-1"
+          aria-labelledby="userDeleteModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+             
+              <div class="modal-body addEmployeeModalDesign">
+               <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                  
+              <br><br><br>
+                <h5 class="modal-title" id="userDeleteModalLabel" class="titleDesign" style="text-align: center;">
+                  <i class="fas fa-exclamation-triangle"></i> Delete Employee
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+             
+                <h3 class="confirmEmployeeDelete" style="text-align: center;">Are you sure you want to delete: <br /></h3>
+                <h2 id="deleteConfirm" style="text-align: center;"></h2>
+                  
+               
+                   <div id="editDelButton">
+                <button
+                  type="button"
+                  class="editDelButtonNew marginCancel btn-close"
+                  data-dismiss="modal"
+                   
+                  
+                >
+                  Cancel <i class="fas fa-ban"></i>
+                </button>
+                <button
+                  type="button"
+                 class="editDelButtonNew"
+                  data-bs-dismiss="modal"
+                  id="delUserConfirm"
+                >
+                  Delete <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Add User Modal -->
+        <form id="newUserForm">
+          <div
+            class="modal fade"
+            id="addEmployeeModal"
+            tabindex="-1"
+            aria-labelledby="addEmployeeModalLabel"
+            aria-hidden="true"
+            onsubmit="return false;"
+          >
+            <div class="modal-dialog modal-dialog-centered ">
+
+              <div class="modal-content addEmployeeModalDesign">
+              
+                 
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                 
+
+                <div class="modal-body addEmployeeModalDesign">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                  <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                  <div id="employeeForm">
+                  <div class="form-group row">
+                    <label for="add_user_firstName" class="col-4 col-form-label"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <input
+                            id="add_user_firstName"
+                            name="add_user_firstName"
+                            type="text"
+                            required="required"
+                            class="employeeInput"
+                            placeholder="first name"
+                          
+                      
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="add_user_lastName" class="col-4 col-form-label"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-groupt">
+                        <div class="input-group-prepend modalIcon">
+                         
+                          <input
+                            id="add_user_lastName"
+                            name="add_user_lastName"
+                            type="text"
+                            required="required"
+                            class="employeeInput"
+                            placeholder="last name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="add_user_email" class="col-4 col-form-label"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <input
+                            id="add_user_email"
+                            name="add_user_email"
+                            type="text"
+                            class="employeeInput"
+                            required="required"
+                            placeholder="email name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="add_user_jobTitle" class="col-4 col-form-label"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                         
+                          <input
+                            id="add_user_jobTitle"
+                            name="add_user_jobTitle"
+                            type="text"
+                            class="employeeInput"
+                            placeholder="job title"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label
+                      for="add_user_department"
+                      class="col-4 col-form-label"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                         
+                          <select
+                            id="add_user_department"
+                            name="add_user_department"
+                            class="styleSelect"
+                            required="required"
+                          ></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label" for="add_user_location"
+                      ></label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <p
+                            id="add_user_location"
+                            class="form-control formLocation styleSelect employeeLoc"
+                          ></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+</div>
+                 
+                   
+                     
+                        <button  id="newUserConfirm" class="employeeConfirm employeeSuccess" 
+                          name="newUserConfirm"
+                          type="submit">Add Employee</button>
+                       
+                     
+                 
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Departments Modal -->
+        <div
+          class="modal fade"
+          id="departmentsModal"
+          tabindex="-1"
+          aria-labelledby="departmentsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content addEmployeeModalDesign">
+             
+              <div class="modal-body addEmployeeModalDesign">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                  <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                  <h5 class="modal-title" id="departmentsModalLabel">
+                  Departments
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <div class="tableFixHeadModals blackBg">
+                  <table class="table-striped ">
+                    <thead class="tableHead blackHeader">
+                      <tr>
+                        <th class="tableIcon"></th>
+                        <th>Department</th>
+                        <th>Location</th>
+                      </tr>
+                    </thead>
+                    <tbody id="departmentsList"></tbody>
+                  </table>
+                </div>
+                 <div class="form-group row submitBtn">
+                  <div class="col-8 flexButton">
+                    <button
+                      id="addDepartment"
+                      name="addDepartment"
+                      type="submit"
+                      class="employeeConfirm depButton"
+                      data-bs-dismiss="modal"
+                      data-bs-toggle="modal"
+                      data-bs-target="#addDepartmentModal"
+                    >
+                     
+                      Add Department
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Departments Modal -->
+        <form id="addDepForm">
+          <div
+            class="modal fade"
+            id="addDepartmentModal"
+            tabindex="-1"
+            aria-labelledby="addDepartmentModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                
+
+                <div class="modal-body addEmployeeModalDesign">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                 <h3 class="modal-title addDepTitle" style="text-align: center;">Add Department</h3>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                  <div class="form-group row">
+                    <label for="newDepName" class="col-4 col-form-label titlesModal" style="text-align: center;"
+                      >Department<br>name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <input
+                            id="newDepName"
+                            name="newDepName"
+                            type="text"
+                            required
+                            class="employeeInput"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="newDepLocation" class="col-4 col-form-label titlesModal"
+                      >Location</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <select
+                            id="newDepLocation"
+                            name="newDepLocation"
+                            class="custom-select form-control styleSelect"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                    
+                      <button
+                        id="newDepConfirm"
+                        name="newDepConfirm"
+                        type="submit"
+                        class="employeeConfirm"
+                      >
+                        
+                        Add Department
+                      </button>
+                   
+                  
+                </div>
+
+                
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Edit Department Modal -->
+        <form id="editDepForm">
+          <div
+            class="modal fade"
+            id="departmentEditModal"
+            tabindex="-1"
+            aria-labelledby="departmentEditModal"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                
+
+                <div class="modal-body addEmployeeModalDesign">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+              <h3 class="modal-title addDepTitle" style="text-align: center;" >Edit Department</h3>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+
+                  <div class="form-group row">
+                    <label for="editDepName" class="col-4 col-form-label titlesModal" style="text-align: center;"
+                      >Department<br> Name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                         
+                          <input
+                            id="editDepName"
+                            name="editDepName"
+                            type="text"
+                            class="employeeInput"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="editDepLocation" class="col-4 col-form-label titlesModal"
+                      >Location</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <select
+                            id="editDepLocation"
+                            name="editDepLocation"
+                            class="styleSelect"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="editDelButton">
+                   
+                       <button
+                        type="submit"
+                        class="editDelButtonNew marginCancel"
+                        id="editDepConfirm"
+                      >
+                        Confirm <i class="fas fa-check"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="editDelButtonNew cancelBtn"
+                        data-dismiss="modal"
+                        id="departmentDelete"
+                      >
+                        Delete<i class="fas fa-trash"></i>
+                      </button>
+                  </div>
+
+                 
+                </div>
+
+              
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Delete Department Modal -->
+        <div
+          class="modal fade"
+          id="departmentDeleteModal"
+          tabindex="-1"
+          aria-labelledby="departmentDeleteModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              
+              <div class="modal-body delete addEmployeeModalDesign">
+                 <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+                 <h5 class="modal-title" id="departmentDeleteModalLabel">
+                  <i class="fas fa-exclamation-triangle"></i> Delete Department
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+               <h3 id="confirmDelDepartment">Are you sure you want to delete this department?</h3>
+                <button
+                  type="button"
+                  class="editDelButtonNew marginCancel"
+                  data-dismiss="modal"
+                >
+                  Cancel <i class="fas fa-ban"></i>
+                </button>
+                <button
+                  type="button"
+                  class="editDelButtonNew"
+                  data-bs-dismiss="modal"
+                  id="delDepConfirm"
+                >
+                  Delete <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+              
+      
+            </div>
+          </div>
+        </div>
+
+         <div
+          class="modal fade"
+          id="departmentDeleteModalError"
+          tabindex="-1"
+          aria-labelledby="departmentDeleteModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              
+              <div class="modal-body delete addEmployeeModalDesign">
+                <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+                 <!-- <img src="images/directoryLogo.png" alt="website logo" class="logoDesign">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span> -->
+                <h5 class="modal-title" id="departmentDeleteModalLabel" id="errorDel">
+                  <i class="fas fa-exclamation-triangle" id="errorDel"></i> Error
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+               <h3 class="errorMessage">Cannot delete as there are existing employees within this department. Please delete corresponding employees and try again.</h3>
+                <button
+                  type="button"
+                  class="editDelButtonNew"
+                  data-dismiss="modal"
+                >
+                  Cancel <i class="fas fa-ban"></i>
+                </button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- Locations Modal -->
+        <div
+          class="modal fade"
+          id="locationsModal"
+          tabindex="-1"
+          aria-labelledby="locationsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+         
+              <div class="modal-body addEmployeeModalDesign">
+                    <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+                <h5 class="modal-title locationTitle" id="locationsModalLabel">Locations</h5>
+                
+                  <table class="locationsTable">
+                    <thead class="tableHead blackHeader">
+                      <tr>
+                        <th>Location</th>
+                      </tr>
+                    </thead>
+                    <tbody id="locationsList"></tbody>
+                  </table>
+                
+                    <button
+                      id="addLocation"
+                      name="addLocation"
+                      type="submit"
+                      class="editDelButtonNew addLocButton"
+                      data-bs-dismiss="modal"
+                      data-bs-toggle="modal"
+                      data-bs-target="#addLocationModal"
+                    >
+                      
+                      Add Location
+                    </button>
+                
+               
+              </div>
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Location Modal -->
+        <form id="editLocForm">
+          <div
+            class="modal fade"
+            id="locationEditModal"
+            tabindex="-1"
+            aria-labelledby="locationEditModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                
+
+                <div class="modal-body addEmployeeModalDesign">
+                  <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+                   <h5 class="modal-title moveEditLocLabel" style="text-align: center;">Edit Location</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                
+
+                  <div class="form-group row moveRight">
+                    <label for="edit_location_name" class="col-4 col-form-label titlesModal" style="text-align: center;"
+                      >Location <br>Name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                       
+                          <input
+                            id="edit_location_name"
+                            name="edit_location_name"
+                            type="text"
+                            class="employeeInput"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-8 deleteBtn" id="deleteLocBtn">
+                   
+                  </div>
+                   <div class="form-group row submitBtn" id="editDelButton">
+                   
+                       <button
+                      type="button"
+                      class="editDelButtonNew marginCancel"
+                      id="locationDelete"
+                      data-bs-dismiss="modal"
+                      data-bs-toggle="modal"
+                      data-bs-target="#locationDeleteModal"
+                    >
+                      Delete Location
+                    </button>
+                     
+                      <button
+                        type="submit"
+                        class="editDelButtonNew"
+                        id="editLocConfirm"
+                      >
+                        Confirm <i class="fas fa-check"></i>
+                      </button>
+                    
+                  </div>
+                </div>
+
+                
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Delete Location Modal -->
+        <form id="delLocForm">
+          <div
+            class="modal fade"
+            id="locationDeleteModal"
+            tabindex="-1"
+            aria-labelledby="locationDeleteModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+               
+                <div class="modal-body delete addEmployeeModalDesign">
+                   <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+                   <h5 class="modal-title" id="locationDeleteModalLabel">
+                    <i class="fas fa-exclamation-triangle"></i> Delete Location
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                  <h3>Are you sure you want to delete:<br /></h3>
+                  <h2 id="delLocName" style="color: #B35642;"></h2>
+                   <button
+                    type="button"
+                    class="editDelButtonNew marginCancel"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel <i class="fas fa-ban"></i>
+                  </button>
+                  <button
+                    type="submit"
+                    class="editDelButtonNew"
+                    data-bs-dismiss="modal"
+                    id="delLocConfirm"
+                  >
+                    Delete <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Add Location Modal -->
+        <form id="addLocForm">
+          <div
+            class="modal fade"
+            id="addLocationModal"
+            tabindex="-1"
+            aria-labelledby="addLocationModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+             
+
+                <div class="modal-body addEmployeeModalDesign">
+                  <img src="images/directoryLogo.png" alt="website logo" id="delDepLogo">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          
+        </button>
+                  <h5 class="modal-title moveEditLocLabel" style="text-align: center;">Add Location</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                  <div class="form-group row">
+                    <label for="newLocName" class="col-4 col-form-label titlesModal"
+                      >Location Name</label
+                    >
+                    <div class="col-8">
+                      <div class="input-group">
+                        <div class="input-group-prepend modalIcon">
+                          
+                          <input
+                            id="newLocName"
+                            name="newLocName"
+                            type="text"
+                            class="employeeInput"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <div class="form-group row submitBtn">
+                    <div class="col-8">
+                      <button
+                        id="addLocConfirm"
+                        name="addLocConfirm"
+                        type="submit"
+                        class="editDelButtonNew addLocButton"
+                      >
+                        
+                        Add Location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+               
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+          <!-- <div id="foldersBox">
+            <div id="employeeFolder" class="folder"></div>
+            <div id="departmentFolder" class="folder folder2"></div>
+            <div id="locationFolder" class="folder folder2"></div>
+          </div> -->
+          <!-- <button
+            id="addEmployee"
+            data-toggle="modal"
+            data-target="#addEmployeeModal"
+          >
+            +<img
+              src="images/employees.png"
+              alt="employees"
+              id="employeesIcon"
+            />
+            add employee
+          </button> -->
+        </div>
+        <div class="container-fluid"></div>
+      </div>
+      <div id="section3">
+        <div id="loggedInImg">
+          <img
+            src="images/employee.png"
+            alt="employee icon"
+            id="employeeIcon"
+          />
+          <p>Logged in: <br />admin</p>
+        </div>
+      </div>
+    </div>
+
+
+        
+   
+<script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="js/script.js"></script>
+   
+  </body>
+</html>
