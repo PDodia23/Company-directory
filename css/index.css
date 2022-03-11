@@ -1,0 +1,967 @@
+@font-face {
+  font-family: "transcend";
+  src: url("fonts/transcend.otf");
+}
+
+@font-face {
+  font-family: "transcend-thin";
+  src: url("fonts/transcendThin.otf");
+}
+
+@font-face {
+  font-family: "joanne";
+  src: url("fonts/joanne.ttf");
+}
+
+@font-face {
+  font-family: "joanne-light";
+  src: url("fonts/joannelight.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "joanne-light";
+  letter-spacing: 0.1rem;
+  color: #474747;
+}
+
+#logo {
+  width: 3vw;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#smallLogo {
+  width: 40px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#logoutIcon {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 2vw;
+  font-size: 40px;
+  left: 100%;
+  transform: translate(100%);
+}
+
+.logoDesign {
+  width: 40px;
+  margin: 20px 0;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.errorMessage {
+  font-size: 12px;
+}
+
+.alertStatus {
+  display: none;
+}
+
+.successDesign {
+  background-color: #7883d4 !important;
+}
+
+#error {
+  color: #c45824;
+}
+
+#errorDel {
+  color: #c45824;
+}
+#departmentDeleteModalLabel {
+  margin-top: 100px;
+}
+
+#delDepLogo {
+  width: 40px;
+  margin: 20px 0;
+
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.footerDesign {
+  border: transparent !important;
+}
+
+#main-container {
+  height: 100vh;
+  background-color: #eff3f7;
+  position: relative;
+}
+
+#section-container {
+  display: grid;
+  grid-template-columns: 1fr 10fr 2fr;
+}
+
+#section1,
+#section2,
+#section3 {
+  position: relative;
+}
+
+#loggedInImg {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  font-size: 7px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  text-transform: uppercase;
+}
+
+#employeeIcon {
+  width: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #474747;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.tooltipHint {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #474747;
+}
+
+.tooltipHint .tooltiptextHint {
+  visibility: hidden;
+  width: 14vw;
+  background-color: #474747;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 1vw;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+}
+
+.tooltipHint:hover .tooltiptextHint {
+  visibility: visible;
+}
+
+.container {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "joanne-light";
+}
+h1 {
+  color: #fff;
+  font-weight: 400;
+}
+input,
+button {
+  border: none;
+  background: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+}
+
+.tooltipLogout {
+  position: absolute;
+  display: inline-block;
+  bottom: 1%;
+}
+
+#tick {
+  position: absolute;
+  width: 20px;
+  margin-left: 5px;
+}
+
+.tooltipLogout .tooltiptextLogout {
+  visibility: hidden;
+  width: 100px;
+  background-color: #474747;
+  font-family: "transcend";
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 10px;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: 60px;
+}
+
+.tooltipLogout:hover .tooltiptextLogout {
+  visibility: visible;
+}
+
+main {
+  font-family: "Janna";
+  letter-spacing: 0.1rem;
+  color: #474747;
+}
+.buttonNewDesign {
+  background-color: #474747 !important;
+  letter-spacing: 0.2rem !important;
+  color: #474747 !important;
+  border: none !important;
+  height: 100px;
+  width: 150px;
+}
+
+.employeeData {
+  font-family: "Transcend";
+  letter-spacing: 0.1rem;
+  color: #474747;
+  font-size: 8px;
+}
+#buttonsCompany {
+  margin: 50px;
+}
+
+tbody {
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: #474747;
+
+  font-family: "Transcend";
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.toggleButtons {
+  font-family: "Janna";
+  letter-spacing: 0.1rem;
+  font-size: 10px;
+  color: #eff3f7;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.buttonRow {
+  margin: auto;
+  text-align: center;
+}
+
+.tableScroll {
+  overflow-y: auto;
+  height: 700px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.tableScroll thead th {
+  background-color: #474747;
+  font-size: 10px;
+  left: 0.1rem;
+  text-align: center;
+  padding: 8px 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.tableStyle {
+  background-color: white !important;
+}
+
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+}
+th {
+  background: gray;
+  color: white;
+}
+
+td,
+th {
+  border-style: solid;
+  border-width: 1px !important;
+}
+
+.tableRow:hover {
+  cursor: pointer;
+  background-color: #c0c5e7 !important;
+}
+
+.tableIcon {
+  text-align: center;
+}
+
+#resetBtn {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.rowButtons {
+  width: 25%;
+  text-align: center;
+}
+
+.formLocation {
+  background-color: whitesmoke !important;
+}
+
+.tableHolder {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 2.5%;
+  border-style: double;
+  border-color: black;
+}
+
+.reset {
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.userInfo {
+  background-color: #474747 !important;
+  color: #eff3f7 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1rem !important;
+}
+
+.titlesModal {
+  position: relative;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#editDelButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.editDelButtonNew {
+  border: 1px solid #eff3f7;
+  color: #eff3f7;
+
+  margin: 30px 0;
+
+  width: 150px;
+
+  border-radius: 3px;
+  padding: 7px 10px;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.editDelButtonNew:hover {
+  background-color: #eff3f7;
+  color: #474747;
+}
+
+.delete {
+  text-align: center;
+  color: red;
+}
+
+.tableFixHeadModals {
+  overflow-y: auto;
+  height: 100%;
+  background-color: whitesmoke;
+}
+.tableFixHeadModals thead th {
+  position: sticky;
+  top: 0;
+}
+
+.tableHead {
+  background-color: gray;
+  color: white;
+}
+
+.depTableRow:hover,
+.locTableRow:hover {
+  cursor: pointer;
+  background-color: #c0c5e7 !important;
+  color: #474747 !important;
+}
+
+#departmentsModalLabel {
+  text-align: center;
+}
+
+.flexButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.depButton {
+  position: relative !important;
+  bottom: 0 !important;
+  padding: 10px 0 !important;
+}
+
+.blackHeader tr th {
+  background-color: #474747 !important;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.tableRowsSpace {
+  padding: 10px 0 !important;
+}
+
+.deleteBtn {
+  margin: auto;
+  text-align: center;
+}
+
+.modalIcon {
+  width: 75%;
+}
+
+#add_user_location {
+  margin-bottom: 0;
+}
+
+.eyeIcon {
+  width: 20px;
+  opacity: 0.7;
+}
+
+.designButton {
+  background-color: #eff3f7;
+  color: #474747;
+  border: 1px solid #474747;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  left: -50px;
+  top: 80%;
+}
+
+.designButton:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.locationTitle {
+  margin: 30px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.addLocButton {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.locationsTable {
+  margin: 30px auto;
+  margin-bottom: 10px;
+}
+
+.moveRight {
+  margin-left: 65px;
+}
+
+.moveEditLocLabel {
+  margin-top: 80px !important;
+}
+
+.addLocButtonNew {
+  position: relative;
+  left: 50%;
+}
+
+.addLocTitle {
+  margin-top: 100px;
+}
+
+.moveLoc {
+  margin: 50px 0;
+  margin-left: 30px;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: -30px;
+}
+
+#locationDeleteModalLabel {
+  margin: 100px 0;
+  margin-bottom: 30px;
+}
+
+.addEmployeeModalDesign {
+  background-color: #474747;
+  color: #eff3f7;
+  border: none;
+  border-radius: 2px;
+  outline: 1px solid #eff3f7;
+  outline-offset: -10px;
+  border-radius: 2px;
+  font-family: "transcend";
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.depButtonMove {
+  border: 1px solid red;
+}
+
+.addDepTitle {
+  font-size: 14px;
+}
+
+.editModalDesign {
+  background-color: #474747;
+  color: #eff3f7;
+  border: none;
+  border-radius: 2px;
+  outline: 1px solid #eff3f7;
+  outline-offset: -10px;
+  border-radius: 2px;
+  font-family: "transcend";
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#edit {
+  margin-right: 10px;
+}
+
+.editEmployeeTitle {
+  text-align: center;
+  font-size: 14px;
+  font-family: "transcend";
+  letter-spacing: 0.1rem;
+  padding: 10px;
+  padding-bottom: 40px;
+}
+
+.marginCancel {
+  margin-right: 10px;
+}
+
+.marginCancelNew {
+  margin-right: 12px;
+}
+
+#employeeModalLabel {
+  text-align: center;
+  font-size: 14px;
+  font-family: "transcend";
+  letter-spacing: 0.1rem;
+  padding: 10px;
+  padding-bottom: 40px;
+}
+
+.confirmEmployeeDelete {
+  font-size: 12px;
+}
+
+#deleteConfirm {
+  margin-bottom: 40px;
+}
+
+#employeeSuccess {
+  font-size: 12px;
+  text-align: center;
+  margin: 60px;
+}
+
+#dateWelcome {
+  margin-top: 30px;
+  font-size: 12px;
+  font-family: "joanne-light";
+  letter-spacing: 0.1rem;
+}
+
+#dateWelcome p {
+  margin-top: -5px;
+}
+
+#dateWelcome h2 {
+  font-size: 20px;
+  color: #7883d4;
+  font-family: "Arvo", serif;
+  font-weight: 400;
+}
+
+.employeeNameDelete {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.addEmployeeModalDesign input {
+  width: 150px;
+  border: 1px solid #eff3f7;
+  letter-spacing: 0.1rem;
+  color: #eff3f7;
+  border-radius: 3px;
+  padding: 7px 10px;
+}
+
+.labelInputLoc {
+  margin-left: 30px;
+}
+
+.newTitle {
+  margin-left: 10px;
+}
+.depDeleteLogo {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#confirmDelDepartment {
+  font-size: 12px;
+  margin-bottom: 40px;
+}
+
+#employeesIcon,
+#departmentIcon,
+#departmentsNew,
+#locationsIcon {
+  width: 20px;
+  margin-right: 4px;
+}
+
+#modalButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.styleSelect {
+  background-color: #474747 !important;
+  font-size: 10px !important;
+  color: #eff3f7 !important;
+  letter-spacing: 0.1rem !important;
+  width: 150px;
+  border: 1px solid #eff3f7;
+  letter-spacing: 0.1rem;
+  color: #eff3f7;
+  border-radius: 3px;
+  padding: 10px 10px;
+}
+
+.styleSelect:focus {
+  outline: none !important;
+}
+
+.close {
+  color: #eff3f7 !important;
+  opacity: 1 !important;
+
+  text-shadow: none !important;
+}
+
+.close:focus {
+  outline: none !important;
+}
+
+#searchSelect {
+  font-family: "transcend";
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  border: none;
+  margin-right: 10px;
+  background-color: #474747;
+  color: #eff3f7;
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+#searchSelect:hover,
+#search:hover {
+  background-color: #7883d4;
+  color: #eff3f7;
+}
+
+select#searchSelect {
+  appearance: none;
+}
+
+#searchSelect:focus {
+  outline: none;
+}
+
+#search {
+  background-color: #474747;
+  border: none;
+  color: #eff3f7;
+  padding: 0 20px;
+  font-family: "transcend";
+  font-size: 10px;
+  transition: all 0.5s ease-in-out;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.searchDesign::placeholder {
+  color: #474747;
+  letter-spacing: 0.1rem;
+  font-family: "transcend";
+  font-size: 7px;
+}
+
+.searchDesign {
+  margin: 10px 0;
+}
+
+.searchDesign:input {
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+}
+.addEmployeeModalDesign .employeeInput::placeholder {
+  color: #eff3f7;
+  opacity: 1;
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+}
+
+.blackBg {
+  background-color: #474747;
+}
+.employeeInput:focus {
+  background-color: #474747;
+  color: #eff3f7;
+}
+
+#searchField {
+  width: 150px;
+  background-color: #eff3f7;
+}
+
+input {
+  color: #474747;
+  font-family: "transcend";
+  letter-spacing: 0.1rem;
+  font-size: 10px;
+}
+
+.employeeConfirm {
+  width: 150px;
+  border: 1px solid #eff3f7;
+  letter-spacing: 0.1rem;
+  color: #eff3f7;
+  border-radius: 3px;
+  padding: 7px 10px;
+  position: relative;
+  left: 52%;
+  transform: translate(-52%);
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 30px;
+}
+
+#compLogo {
+  display: block;
+  text-align: center;
+}
+
+.employeeLoc {
+  width: 150px !important;
+}
+.employeeConfirm:hover {
+  background-color: #eff3f7;
+  color: #474747;
+}
+
+#sqlTable {
+  font-family: "Transcend";
+  letter-spacing: 0.1rem;
+  color: #474747;
+  font-size: 8px;
+}
+
+#smallLogo,
+#loggedInImg2,
+#logoutIcon2 {
+  display: none;
+}
+
+#clickRow {
+  position: relative;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  color: #474747;
+  font-size: 10px;
+  font-family: "transcend";
+  align-items: center;
+}
+
+@media only screen and (max-width: 1250px) {
+  html {
+    font-size: 0.75em;
+  }
+
+  .tableHolder {
+    width: 95%;
+  }
+
+  td {
+    padding: 4px 8px;
+    border: 0.5px solid #ccc;
+  }
+
+  th {
+    padding: 0px;
+    text-align: center !important;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  html {
+    font-size: 0.65em;
+  }
+
+  .tableHolder {
+    width: 98%;
+  }
+
+  td {
+    padding: 2px 4px;
+    border: 0.5px solid #ccc;
+  }
+
+  .tableIcon {
+    display: none;
+  }
+
+  th {
+    padding: 0px;
+    text-align: center !important;
+  }
+  #section-container {
+    display: grid;
+    grid-template-columns: 0fr 10fr 0fr;
+  }
+  #logoutIcon,
+  #loggedInImg {
+    display: none;
+  }
+
+  #smallLogo {
+    display: block;
+  }
+  #loggedInImg2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 7px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    text-transform: uppercase;
+  }
+  #logoutIcon2 {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    width: 20px;
+    font-size: 40px;
+    display: none;
+  }
+
+  #employeeIcon2 {
+    width: 30px;
+    background-color: #474747;
+    padding: 4px;
+    border-radius: 50%;
+    margin-right: 3px;
+    display: none;
+  }
+
+  #loggedInImg2 p {
+    margin-top: 10px;
+    display: none;
+  }
+
+  .tableScroll {
+    height: 650px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .modalIcon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .hider1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .hider2 {
+    display: none;
+  }
+}
