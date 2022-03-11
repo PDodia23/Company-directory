@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "transcend";
+  src: url("fonts/transcend.otf");
+}
+
+@font-face {
+  font-family: "transcend-thin";
+  src: url("fonts/transcendThin.otf");
+}
+
+@font-face {
+  font-family: "joanne";
+  src: url("fonts/joanne.ttf");
+}
+
+@font-face {
+  font-family: "joanne-light";
+  src: url("fonts/joannelight.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "joanne-light";
+  letter-spacing: 0.1rem;
+  color: #474747;
+}
+
+#welcomeForm {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-30%, -50%);
+}
+
+#welcomeSection h1 {
+  text-transform: uppercase;
+  font-size: 80px;
+}
+
+#welcomeSection p {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: -10px;
+}
+
+#logo {
+  width: 50px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+#stationary {
+  position: absolute;
+  width: 200px;
+  bottom: 20px;
+  left: 60px;
+}
+
+#person {
+  width: 40vw;
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+}
+
+#circles {
+  width: 30%;
+  height: 100vh;
+  position: absolute;
+  left: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  top: -10%;
+}
+
+.dots {
+  width: 65%;
+  padding-bottom: 65%;
+  border-radius: 50%;
+  position: relative;
+  right: -60%;
+}
+
+#circles2 {
+  width: 30%;
+  height: 100vh;
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.purple-1 {
+  background-color: #6a75ca;
+}
+
+.purple-2 {
+  background-color: #8890ce;
+}
+
+.purple-3 {
+  background-color: #d0d5fa;
+}
+
+#submit {
+  background-color: #474747;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  padding: 2em 2em;
+  font-family: "trancend-thin";
+  letter-spacing: 0.2rem;
+  font-size: 7px;
+  width: 200px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+input {
+  font-family: "trancend-thin";
+  font-size: 10px;
+  border: none;
+  width: 200px;
+  padding: 0.8em 2em;
+  margin-top: 10px;
+  border-radius: 2px;
+  border: 1px solid #4747471a;
+  background-color: transparent;
+  letter-spacing: 0.2rem;
+}
+
+::placeholder {
+  color: #47474759;
+  text-transform: capitalize;
+  font-family: "joanne";
+  letter-spacing: 0.2rem;
+}
+
+#forgotPw {
+  color: #4747476e;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+#hints {
+  text-transform: uppercase;
+  border-bottom: 1px solid #474747;
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+input:focus {
+  outline: none;
+  color: #474747;
+  text-transform: none;
+  letter-spacing: 0.2rem;
+}
+
+input:hover {
+  background-color: #dadbe228;
+}
+
+.loginIncorrect {
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 12px;
+}
+
+label {
+  margin-bottom: -10px;
+}
+
+.styleIncorrect {
+  background-color: #6a75ca;
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  width: 400px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.cross {
+  background-color: #8890ce;
+  color: #fff;
+  border: none;
+  position: relative;
+  left: 10%;
+  transform: translate(-10%);
+}
+
+#info {
+  width: 20px;
+}
+
+.tooltipHint {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #474747;
+}
+
+.tooltipHint .tooltiptextHint {
+  visibility: hidden;
+  width: 200px;
+  background-color: #474747;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 10px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+}
+
+.tooltipHint:hover .tooltiptextHint {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 1200px) {
+  #circles,
+  #circles2,
+  #person {
+    display: none;
+  }
+
+  #stationary {
+    left: 8%;
+    width: 100px;
+  }
+
+  #welcomeForm {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    text-align: center;
+    transform: translate(-50%, -30%);
+  }
+  .tooltipHint .tooltiptextHint {
+    width: 150px;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 7px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  #welcomeSection h1 {
+    font-size: 40px;
+
+    margin-top: 50px;
+  }
+
+  #welcomeSection p {
+    font-size: 8px;
+    text-transform: uppercase;
+    margin-top: -10px;
+  }
+}
