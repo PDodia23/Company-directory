@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="fontawesome/css/all.css" />
+    <link rel="stylesheet" href="fontawesome/webfonts" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <meta name="description" content="Company Directory" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, PHP, AJAX, MYSQL" />
+    <meta name="author" content="Pooja Dodia" />
+    <title>Company & Co.</title>
+    <link rel="icon" type="image/x-icon" href="/images/directoryLogo.png" />
+  </head>
+  <body>
+    <img src="images/directoryLogo.png" alt="logo of company & co." id="logo" />
+    <img src="images/stationary.png" alt="stationary" id="stationary" />
+
+    <!--CIRCLES-->
+    <div id="circles">
+      <div class="dots purple-1"></div>
+      <div class="dots purple-2"></div>
+      <div class="dots purple-3"></div>
+      <div class="dots purple-1"></div>
+      <div class="dots purple-1"></div>
+      <div class="dots purple-2"></div>
+      <div class="dots purple-3"></div>
+      <div class="dots purple-1"></div>
+    </div>
+    <div id="circles2">
+      <div class="dots purple-2"></div>
+      <div class="dots purple-1"></div>
+      <div class="dots purple-1"></div>
+      <div class="dots purple-3"></div>
+      <div class="dots purple-1"></div>
+      <div class="dots purple-2"></div>
+      <div class="dots purple-3"></div>
+      <div class="dots purple-1"></div>
+    </div>
+    <img src="images/person.png" alt="thinking person" id="person" />
+
+    <div id="welcomeForm">
+      <div id="welcomeSection">
+        <h1 id="welcome">welcome</h1>
+        <p>log in to company & co.</p>
+      </div>
+
+      <div id="form">
+        <br /><br />
+        <form autocomplete="off">
+          <label for="username">Username</label><br />
+          <input
+            autocomplete="off"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            required
+            autocomplete="off"
+          />
+          <br /><br />
+
+          <div id="passwordBox">
+            <label for="password">Password </label><br />
+
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="*********"
+              required
+              autocomplete="new-password"
+            />
+          </div>
+          <br /><br />
+          <input
+            type="submit"
+            id="submit"
+            value="sign in"
+            id="#incorrectLogin"
+          />
+
+          <p id="forgotPw">Forgot password?</p>
+          <div class="tooltipHint">
+            HINT
+            <span class="tooltiptextHint"
+              >Username: admin <br />
+              Password: company</span
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--INCORRECT LOGIN MODAL-->
+    <div
+      class="modal fade"
+      id="incorrectLogin"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="incorrectLogin"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <button
+          type="button"
+          class="btn btn-secondary cross"
+          data-dismiss="modal"
+        >
+          X
+        </button>
+        <div class="modal-content styleIncorrect">
+          <div class="modal-body loginIncorrect">
+            <img src="images/info.png" alt="information icon" id="info" />
+            Looks like either your email address or password were incorrect<br />
+            Please try again. See hint below.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src=" fontawesome/js/all.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
